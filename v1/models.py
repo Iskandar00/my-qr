@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15, unique=True)
     is_active = models.BooleanField(default=True)
+    chat_id = models.CharField(max_length=128, null=True, blank=True)
 
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = ['username']

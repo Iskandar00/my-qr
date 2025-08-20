@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
 
     'v1',
+    'bot'
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,5 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'v1.CustomUser'
+
+TELEGRAM_TOKEN = "7717708477:AAEvQ0LGM_1agPObv7aTRJz5AfcN43SVINw"

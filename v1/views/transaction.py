@@ -1,3 +1,4 @@
+import asyncio
 import uuid
 
 from rest_framework.decorators import api_view, permission_classes
@@ -8,6 +9,7 @@ from rest_framework import status
 from django.utils.timezone import now
 from v1.models import Transaction, QR
 from v1.serializers import QRSerializer
+from v1.utils.telegram_utils import send_transaction_message
 
 
 @api_view(['POST'])
@@ -99,5 +101,9 @@ def pay(request):
     qr_transaction.status = 4
     qr_transaction.description = "Success"
     qr_transaction.save()
+
+    user = qr_transaction.qr.partner
+    if user and user.chat_id:
+        asyncio.run(send_transaction_message(user.chat_id, trace_id, amount,qr_transaction.qr.purpose))
 
     return Response({"status": "SUCCESS", "trace_id": trace_id}, status=status.HTTP_200_OK)
