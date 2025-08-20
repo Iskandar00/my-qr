@@ -1,0 +1,56 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+env/
+venv/
+ENV/
+.venv/
+.env
+
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+*.mo
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS fayllari
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Celery beat
+celerybeat-schedule
+
+# Pytest
+.pytest_cache/
+
+# Django secret key files
+secret_key.txt
