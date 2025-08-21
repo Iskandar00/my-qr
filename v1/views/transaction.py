@@ -101,9 +101,10 @@ def pay(request):
     qr_transaction.description = "Success"
     qr_transaction.save()
 
-    return Response({"status": 200}, status=status.HTTP_200_OK)
+    # return Response({"status": 200}, status=status.HTTP_200_OK)
     user = qr_transaction.qr.partner
+    print(">>>>>>>>>>>>", user)
     if user and user.chat_id:
-        asyncio.run(send_transaction_message(user.chat_id, trace_id, amount,qr_transaction.qr.purpose))
+        asyncio.run(send_transaction_message(user.chat_id, trace_id, amount, qr_transaction.qr.purpose))
 
     return Response({"status": "SUCCESS", "trace_id": trace_id}, status=status.HTTP_200_OK)

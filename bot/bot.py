@@ -12,7 +12,7 @@ def run_bot():
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 
     commands.register(app)
-    callbacks.register(app)
+    # callbacks.register(app)
 
     print("🤖 Telegram bot running...")
     app.run_polling()
