@@ -38,7 +38,7 @@ class LoginSerializer(serializers.Serializer):
 class QRSerializer(serializers.ModelSerializer):
     class Meta:
         model = QR
-        fields = ['id', 'qrc_id', 'terminal_ext_id', 'purpose', 'currency', 'min_amount', 'max_amount', 'expire_date']
+        fields = ['id', 'terminal_ext_id', 'purpose', 'currency', 'min_amount', 'max_amount', 'expire_date']
 
     def create(self, validated_data):
         user = self.context['request'].user

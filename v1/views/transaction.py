@@ -37,7 +37,6 @@ def qr_create(request):
 
 @api_view(['GET'])
 def check(request, qrc_id: str):
-    # currency = request.GET.get("currency")
     trace_id = request.GET.get("trace_id") or str(uuid.uuid4())
 
     qr_obj = QR.objects.filter(qrc_id=qrc_id).first()
@@ -100,4 +99,4 @@ def pay(request):
     qr_transaction.description = "Success"
     qr_transaction.save()
 
-    return Response({"status": "SUCCESS", "trace_id": trace_id}, status=status.HTTP_200_OK)
+    return Response({"status": 200}, status=status.HTTP_200_OK)
