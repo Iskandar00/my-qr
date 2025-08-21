@@ -39,7 +39,6 @@ def qr_create(request):
 
 @api_view(['GET'])
 def check(request, qrc_id: str):
-    # currency = request.GET.get("currency")
     trace_id = request.GET.get("trace_id") or str(uuid.uuid4())
 
     qr_obj = QR.objects.filter(qrc_id=qrc_id).first()
@@ -102,6 +101,7 @@ def pay(request):
     qr_transaction.description = "Success"
     qr_transaction.save()
 
+    return Response({"status": 200}, status=status.HTTP_200_OK)
     user = qr_transaction.qr.partner
     if user and user.chat_id:
         asyncio.run(send_transaction_message(user.chat_id, trace_id, amount,qr_transaction.qr.purpose))
